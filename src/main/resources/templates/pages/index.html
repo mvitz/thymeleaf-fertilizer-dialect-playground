@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:fe="" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <main>
+        <article>
+            <h1 th:text="${title}">
+                Some Text
+            </h1>
+            <p>
+                test fragment from fe:test
+            </p>
+
+            <fe:test th:title="${variableTitle}" content="Lorem ipsum dolor sit amet usw...">
+                Some Inner Ipsums
+            </fe:test>
+
+            <p>
+                test fragment from th:fragment (with no arguments set)
+            </p>
+
+            <div th:replace="~{fragments/test.html :: test()}">
+                Yada Yada
+            </div>
+        </article>
+    </main>
+</body>
+</html>
