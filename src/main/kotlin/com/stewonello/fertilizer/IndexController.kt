@@ -14,6 +14,8 @@ class IndexController {
         model.addAttribute("testProps", Test("TestProp title", "TestProp content"))
         model.addAttribute("variableTitle", "A Variable Title")
         model.addAttribute("someAbandonedVariable", "Abandoned Content")
+        model.addAttribute("data", mapOf(Pair("value", "some map object value passed down")))
+        model.addAttribute("otherData", mapOf(Pair("value", "some other map object value passed down")))
         return "pages/index"
     }
 }

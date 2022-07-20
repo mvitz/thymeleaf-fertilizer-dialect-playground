@@ -7,16 +7,16 @@ import org.thymeleaf.processor.element.AbstractElementTagProcessor
 import org.thymeleaf.processor.element.IElementTagStructureHandler
 import org.thymeleaf.standard.expression.Fragment
 import org.thymeleaf.standard.expression.StandardExpressions
+import org.thymeleaf.standard.processor.StandardReplaceTagProcessor
 import org.thymeleaf.templatemode.TemplateMode
 
-// Inspired by
 class FertilizerElementTagProcessor(
     dialectPrefix: String, private val elementName: String
 ) : AbstractElementTagProcessor(
     TemplateMode.HTML, dialectPrefix, elementName, true, null, false, PRECEDENCE
 ) {
     companion object {
-        private const val PRECEDENCE: Int = 666 // TODO: find some slightly more meaningful standard precedence from thymeleaf!?
+        private const val PRECEDENCE: Int = StandardReplaceTagProcessor.PRECEDENCE
     }
 
     override fun doProcess(
@@ -40,7 +40,8 @@ class FertilizerElementTagProcessor(
             val plainAttributeName = it.attributeDefinition.attributeName.attributeName
 
             if (!it.attributeDefinition.attributeName.isPrefixed) {
-                structureHandler.setLocalVariable(plainAttributeName, it.value)
+                // deactivated... instead of populating as variable, add to fragment root element
+                // structureHandler.setLocalVariable(plainAttributeName, it.value)
             } else {
                 // It seems not efficient to extract and reassign the values.
                 // Why doesn't it work like here??:

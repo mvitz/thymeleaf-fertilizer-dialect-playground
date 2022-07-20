@@ -29,12 +29,17 @@ import org.thymeleaf.standard.StandardDialect
 
 // TODO: Find components in sub folders? 'fragments/forms/input.html' <-- <fe:forms:input> ??
 
-// TODO: Make componentPackage name somehow available for Processors? For some features down the line?
+// TODO: Make componentPackage name somehow available for Processors? For some features down the line? Why?
 
 // TODO: A fe:props attribute: <fe:mycomponent fe:props="${thatVar}"> can just extract thatVar into all the fragment parameters?
 
 /* TODO: Tie a 'MyComponentProps' tight to 'MyComponent'?
     'MyComponentProps' optional or required (raise Exception when missing??)? */
+
+
+// TODO: aha ... hm scoped variables by handling variables in a "fertilizer namespace" map and clearing that one on any new processing?
+
+// TODO: <fe:component title="add to component root element" th:title="'populate as variable'">
 
 class FertilizerDialect(
     private val componentPackage: String, name: String = DIALECT_NAME, prefix: String = DIALECT_PREFIX, processorPrecedence: Int = StandardDialect.PROCESSOR_PRECEDENCE

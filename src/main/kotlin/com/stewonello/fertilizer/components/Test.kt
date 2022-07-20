@@ -7,7 +7,8 @@ import com.stewonello.fertilizer.dialect.FertilizerComponent
 // Must inherit FertilizerComponent() to be auto registered
 data class Test(
     var title: String,
-    var content: String
+    val content: String,
+    val data: Map<String, String>? = null
 ) : FertilizerComponent() {
 
     /* TODO: ... could we add useful methods and component logic here?? OMG !!

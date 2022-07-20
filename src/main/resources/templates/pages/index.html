@@ -14,14 +14,21 @@
             <p>
                 test fragment from fe:test
             </p>
-            <fe:test th:title="${variableTitle}" content="Lorem ipsum dolor sit amet usw...">
+            <fe:test th:title="${variableTitle}" th:content="'Lorem ipsum dolor sit amet usw...'">
                 Some Inner Ipsums
             </fe:test>
 
             <p>
-                test fragment from fe:test, props via TestProps()
+                test fragment from fe:test, props via constructor
             </p>
             <fe:test th:title="${testProps.title}" th:content="${testProps.content}">
+                Some Inner Ipsums
+            </fe:test>
+
+            <p>
+                test fragment from fe:test, pass down object
+            </p>
+            <fe:test th:title="${testProps.title}" th:content="${testProps.content}" th:data="${otherData}">
                 Some Inner Ipsums
             </fe:test>
 
@@ -33,7 +40,10 @@
             </div>
 
             <!-- TODO: possible future syntax -->
-            <fe:future fe:props="varWithAllPropsForAllFragmentParams" th:title="#{override.fe:props.title}">
+            <fe:future
+                    fe:props="varWithAllPropsForAllFragmentParams ???"
+                    th:title="#{override.fe:props.title}"
+                    title="add to component root element">
                 <span fe:slot="heading">Something for the heading</span>
                 <span fe:slot="default">Something for the body</span>
             </fe:future>
