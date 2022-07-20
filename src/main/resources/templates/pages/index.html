@@ -11,42 +11,25 @@
             <h1 th:text="${title}">
                 Some Text
             </h1>
-            <p>
-                test fragment from fe:test
-            </p>
-            <fe:test th:title="${variableTitle}" th:content="'Lorem ipsum dolor sit amet usw...'">
+
+            <h2>
+                Test Component
+            </h2>
+            <pre>
+&lt;fe:test data-test=&quot;test-value&quot; th:data-title=&quot;${title}&quot; fe:title=&quot;${testProps.title}&quot; fe:content=&quot;${testProps.content}&quot; fe:data=&quot;${otherData}&quot;&gt;
+    Some Inner Ipsums
+&lt;/fe:test&gt;
+            </pre>
+            <fe:test data-test="test-value" th:data-title="${title}" fe:title="${testProps.title}" fe:content="${testProps.content}" fe:data="${otherData}">
                 Some Inner Ipsums
             </fe:test>
 
-            <p>
-                test fragment from fe:test, props via constructor
-            </p>
-            <fe:test th:title="${testProps.title}" th:content="${testProps.content}">
-                Some Inner Ipsums
-            </fe:test>
-
-            <p>
-                test fragment from fe:test, pass down object
-            </p>
-            <fe:test th:title="${testProps.title}" th:content="${testProps.content}" th:data="${otherData}">
-                Some Inner Ipsums
-            </fe:test>
-
-            <p>
-                test fragment from th:fragment (with no arguments set)
-            </p>
+            <h2>
+                Normal th:fragment call
+            </h2>
             <div th:replace="~{fragments/test.html :: test()}">
                 Yada Yada
             </div>
-
-            <!-- TODO: possible future syntax -->
-            <fe:future
-                    fe:props="varWithAllPropsForAllFragmentParams ???"
-                    th:title="#{override.fe:props.title}"
-                    title="add to component root element">
-                <span fe:slot="heading">Something for the heading</span>
-                <span fe:slot="default">Something for the body</span>
-            </fe:future>
         </article>
     </main>
 </body>
