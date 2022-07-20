@@ -34,7 +34,7 @@ Call components/fragments like so:
 ```
 <div>
     <!-- yea its still thymeleaf -->
-    <fe:mycomponent text="Some Lorem" th:foo="${bar}">
+    <fe:mycomponent th:text="'Some Lorem'" th:foo="${bar}">
 </div>
 ```
 
