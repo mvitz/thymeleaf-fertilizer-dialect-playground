@@ -14,18 +14,29 @@
             <p>
                 test fragment from fe:test
             </p>
-
             <fe:test th:title="${variableTitle}" content="Lorem ipsum dolor sit amet usw...">
+                Some Inner Ipsums
+            </fe:test>
+
+            <p>
+                test fragment from fe:test, props via TestProps()
+            </p>
+            <fe:test th:title="${testProps.title}" th:content="${testProps.content}">
                 Some Inner Ipsums
             </fe:test>
 
             <p>
                 test fragment from th:fragment (with no arguments set)
             </p>
-
             <div th:replace="~{fragments/test.html :: test()}">
                 Yada Yada
             </div>
+
+            <!-- TODO: possible future syntax -->
+            <fe:future fe:props="varWithAllPropsForAllFragmentParams" th:title="#{override.fe:props.title}">
+                <span fe:slot="heading">Something for the heading</span>
+                <span fe:slot="default">Something for the body</span>
+            </fe:future>
         </article>
     </main>
 </body>

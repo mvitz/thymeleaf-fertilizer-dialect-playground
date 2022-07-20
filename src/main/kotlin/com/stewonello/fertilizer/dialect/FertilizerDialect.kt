@@ -5,9 +5,36 @@ import org.thymeleaf.dialect.AbstractProcessorDialect
 import org.thymeleaf.processor.IProcessor
 import org.thymeleaf.standard.StandardDialect
 
-// TODO: Slot functionality: <fe:thing><div fe:slot="target" class="blue">lorem</div></fe:thing> or similar ...
-// TODO: Functionality to handle simple body like JSX: <Comp>Text <span>or more</span></Comp> --> (props) => <div>{props.children}</div> ... via "standard slot"?
+/* TODO: Slots and tag body
+    Functionality to handle simple body 'like JSX'(?) ...via a predefined slot?:
+    https://vuejs.org/guide/components/slots.html
+    .
+    .
+    <fe:comp>
+        Text <span>or more</span>
+    </fe:comp>
+    <fe:comp>
+        <!-- Replaces target slot -->
+        <div fe:slot="heading">Yada yada</fe:slot>
+        <!-- Use default here <slot></slot> -->
+        <div fe:slot="default">Yolo yolo</fe:slot>
+    </fe:comp>
+    .
+    .
+    <div th:fragment="comp">
+        <fe:slot name="heading"></slot>
+        <!-- NO NAME: Use normal tag body -->
+        <fe:slot></slot>
+    </div> */
+
 // TODO: Find components in sub folders? 'fragments/forms/input.html' <-- <fe:forms:input> ??
+
+// TODO: Make componentPackage name somehow available for Processors? For some features down the line?
+
+// TODO: A fe:props attribute: <fe:mycomponent fe:props="${thatVar}"> can just extract thatVar into all the fragment parameters?
+
+/* TODO: Tie a 'MyComponentProps' tight to 'MyComponent'?
+    'MyComponentProps' optional or required (raise Exception when missing??)? */
 
 class FertilizerDialect(
     private val componentPackage: String, name: String = DIALECT_NAME, prefix: String = DIALECT_PREFIX, processorPrecedence: Int = StandardDialect.PROCESSOR_PRECEDENCE

@@ -16,7 +16,7 @@ class FertilizerElementTagProcessor(
     TemplateMode.HTML, dialectPrefix, elementName, true, null, false, PRECEDENCE
 ) {
     companion object {
-        private const val PRECEDENCE: Int = 100 // TODO: find some slightly more meaningful standard precedence from thymeleaf!?
+        private const val PRECEDENCE: Int = 666 // TODO: find some slightly more meaningful standard precedence from thymeleaf!?
     }
 
     override fun doProcess(
@@ -25,7 +25,9 @@ class FertilizerElementTagProcessor(
         structureHandler: IElementTagStructureHandler
     ) {
         val expressionParser = StandardExpressions.getExpressionParser(context.configuration)
-        // TODO: make location configurable
+        // TODO: Make location configurable. (Even independent from thymeleaf location?)
+        // TODO: Would it be easier to mimic the props directly into the fragment parameters?
+        // TODO: Can we actually not rely on mimicking a template expression? 😇 Would that be better at all?
         val testFragmentExpression = "~{fragments/$elementName :: $elementName}"
 
         val fragmentExpression = expressionParser.parseExpression(context, testFragmentExpression)
@@ -43,8 +45,7 @@ class FertilizerElementTagProcessor(
                 // It seems not efficient to extract and reassign the values.
                 // Why doesn't it work like here??:
                 // https://github.com/thymeleaf/thymeleaf/blob/120a0e9cc5d768a7b21abb19b4f4122bdc019206/lib/thymeleaf/src/main/java/org/thymeleaf/standard/processor/AbstractStandardFragmentInsertionTagProcessor.java#L264-L271
-                val exp = expressionParser.parseExpression(context, it.value)
-                val valueContent = exp.execute(context)
+                val valueContent = expressionParser.parseExpression(context, it.value).execute(context)
                 structureHandler.setLocalVariable(plainAttributeName, valueContent)
             }
         }
