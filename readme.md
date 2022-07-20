@@ -27,12 +27,6 @@ import com.stewonello.fertilizer.dialect.FertilizerComponent
 
 // Will map to "<templates>/fragments/mycomponent.html"
 class MyComponent : FertilizerComponent()
-
-// Tip: You can add classes here to provide type hints
-data class MyComponentProps(
-    val title: String,
-    val content: String
-)
 ```
 
 Call components/fragments like so:
