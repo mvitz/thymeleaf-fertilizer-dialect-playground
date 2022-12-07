@@ -1,7 +1,17 @@
 package com.stewonello.fertilizer.dialect
 
-open class FertilizerComponent(attributes: Map<String, Any>, var slotNames: MutableSet<String>) {
+import org.thymeleaf.context.ITemplateContext
+
+data class FertilizerComponentContext(
+    val attributes: Map<String, Any?>, 
+    val slotNames: MutableSet<String?>, 
+    val context: ITemplateContext
+)
+
+open class FertilizerComponent(val componentContext: FertilizerComponentContext) {
+
     public fun hasSlot(slotName: String): Boolean {
-        return slotNames.contains(slotName)
+        return this.componentContext.slotNames.contains(slotName)
     }
+
 }

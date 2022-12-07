@@ -21,13 +21,15 @@
         <hr />
         <fe:button styling="cta" additional-classes="text-uppercase">CTA fe:button with uppercase</fe:button>
         <hr />
-        <fe:button data-foo="bar" aria-live="polite" fnd-super="test">fe:button with additional attributes</fe:button>
+        <fe:button data-foo="bar" leer aria-live="polite" fnd-super="test">fe:button with additional attributes</fe:button>
         <hr />
         <fe:button type="button" name="action" value="delete">fe:button with name and value</fe:button>
 
         <h1 class="mt-5">Cards</h1>
         <fe:card heading-level="2"> 
             Welcome to the <strong>best card</strong>
+            <h1 class="mt-5">Cards</h1>
+            <span fe:slot="fnd">TAUCHT NICHT AUF!</span>
             <span fe:slot="heading"><span lang="de">Großartige</span> Card</span>
             <span fe:slot="footer">This is the <fe:badge>footer</fe:badge>!</span>
         </fe:card>
@@ -58,32 +60,32 @@
         </form>
         
         <h1 class="mt-5">MagicHeaders</h1>
-        <lit-mh-section>
+        <fe:magicheaders>
             <article>
                 <header>
                     <lit-mh-heading>Some h1</lit-mh-heading>
                     <p class="tagline"> Content </p>
                 </header>
-                <lit-mh-section>
+                <fe:magicheaders>
                     <section>
                         <lit-mh-heading>Some h2</lit-mh-heading>
                     </section>
                     <p>Some more content</p>
-                    <lit-mh-section>
+                    <fe:magicheaders>
                         <div class="foo bar">
                             <lit-mh-heading>Some h3</lit-mh-heading>
                         </div>
                         <p>Some more content</p>
-                    </lit-mh-section>
-                </lit-mh-section>
-                <lit-mh-section>
+                    </fe:magicheaders>
+                </fe:magicheaders>
+                <fe:magicheaders>
                     <section>
                         <lit-mh-heading>Again some h2</lit-mh-heading>
                     </section>
                     <p>Some more content</p>
-                </lit-mh-section>
+                </fe:magicheaders>
             </article>
-        </lit-mh-section>
+        </fe:magicheaders>
 
         <h1 class="mt-5">Form Group</h1>
         <lit-form-group type="email" id="my-email" label="eMail" name="users_email" value="BOOM" error="'BOOM' is not a valid E-Mail address"></lit-form-group>

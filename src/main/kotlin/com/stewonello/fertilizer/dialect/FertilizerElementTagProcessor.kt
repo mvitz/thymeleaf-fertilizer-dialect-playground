@@ -122,7 +122,8 @@ class FertilizerElementModelProcessor(
         val newModel = prepareModel(context, fragmentModel, slots)
 
         val attrs = extractAttrs(tag.get(0) as IProcessableElementTag, context, expressionParser)
-        var componentInstance = componentClass.constructors.first().newInstance(attrs, slots.keys)
+        val componentContext = FertilizerComponentContext(attrs, slots.keys, context)
+        var componentInstance = componentClass.constructors.first().newInstance(componentContext)
         structureHandler.setLocalVariable("it", componentInstance)
         
         tag.reset(); // clear the model reference

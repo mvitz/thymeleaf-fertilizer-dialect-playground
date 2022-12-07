@@ -1,13 +1,14 @@
 package com.stewonello.fertilizer.components
 
 import com.stewonello.fertilizer.dialect.FertilizerComponent
+import com.stewonello.fertilizer.dialect.FertilizerComponentContext
 
-class Badge(attributes: Map<String, String>, slotNames: MutableSet<String>) : FertilizerComponent (attributes, slotNames) {
+class Badge(componentContext: FertilizerComponentContext) : FertilizerComponent(componentContext) {
 
     var type: String?
 
     init {
-        this.type = attributes["type"]
+        this.type = componentContext.attributes["type"].toString()
     }
 
     public fun classNames(): String {
