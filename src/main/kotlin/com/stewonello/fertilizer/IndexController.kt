@@ -9,7 +9,7 @@ class IndexController {
 
     @GetMapping("/")
     fun index(model: Model): String {
-        model.addAttribute("data", mapOf(Pair("value", "some map object value passed down")))
+        model.addAttribute("list", mapOf(Pair("foo", "bar")))
         return "pages/index"
     }
 }

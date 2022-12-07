@@ -29,7 +29,7 @@
         <fe:card heading-level="2"> 
             Welcome to the <strong>best card</strong>
             <span fe:slot="heading"><span lang="de">Großartige</span> Card</span>
-            <span fe:slot="footer">This is the footer!</span>
+            <span fe:slot="footer">This is the <fe:badge>footer</fe:badge>!</span>
         </fe:card>
         <hr />
         <fe:card heading-level="1" href="#foo">
@@ -44,40 +44,9 @@
         </fe:card>
 
         <h1 class="mt-5">List</h1>
-        <lit-list children='{"type": "Car", "Foo": "Text"}'>
+        <fe:list fe:children='${list}'>
             Muss weg!
-        </lit-list>
-        <hr>
-        <lit-list id="list1">
-            <span slot="slot_1234">Hallo Welt!</span>
-        </lit-list>
-        <script>
-            setTimeout(() => {
-                document.getElementById('list1').addItem('type', "Car");
-                let badge = document.createElement('lit-badge');
-                badge.innerHTML = "<span lang=\"de\">Etwas</span> text";
-                document.getElementById('list1').addItem("Foo", badge);
-                document.getElementById('list1').addSlotItem("Bar", 1234);
-            }, 2000);
-        </script>
-        <hr>
-        <lit-list id="list2">
-            <lit-list-item id="key1" key="key1">Car</lit-list-item>
-            <lit-list-item id="key2" key="Foo"><lit-badge id="my_badge">Old Badge</lit-badge></lit-list-item>
-        </lit-list>
-        <script>
-            setTimeout(() => {
-                document.getElementById('key1').innerHTML = 'type_new';
-                document.getElementById('my_badge').innerHTML = 'New Badge';
-                let thirdItem = document.createElement('lit-list-item');
-                thirdItem.setAttribute('key', '3rd Key');
-                thirdItem.innerHTML = "3rd Item";
-                document.getElementById('list2').append(thirdItem);
-            }, 2000)
-        </script>
-        <hr />
-        <lit-list ratio="8:4" children='{"type": "Bike", "Foo": "Bar"}'>
-        </lit-list>
+        </fe:list>
 
         <hr>
 
