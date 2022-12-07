@@ -1,3 +1,3 @@
 package com.stewonello.fertilizer.dialect
 
-open class FertilizerComponent
+open class FertilizerComponent()

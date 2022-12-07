@@ -49,7 +49,7 @@ class FertilizerDialect(
         return fertilizerComponentClasses.map {
             // TODO: more fancy handling of name: camelcase to kebab case or snake case something like that, maybe even configurable
             val tagName = it.simpleName.lowercase() // ClassName -> classname
-            FertilizerElementTagProcessor(DIALECT_PREFIX, tagName)
+            FertilizerElementTagProcessor(DIALECT_PREFIX, tagName, it)
         }.toHashSet()
     }
 }
