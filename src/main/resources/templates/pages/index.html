@@ -6,31 +6,18 @@
     <link rel="stylesheet" href="/style.css">
 </head>
 <body>
-    <main>
-        <article>
-            <h1 th:text="${title}">
-                Some Text
-            </h1>
+   
+    <fe:vcard title="FND" content="FND is a funny guy from ..." fe:data="${otherData}">
+        Here is some cool image of FND!
+    </fe:vcard>
 
-            <h2>
-                Test Component
-            </h2>
-            <pre>
-&lt;fe:test data-test=&quot;test-value&quot; th:data-title=&quot;${title}&quot; fe:title=&quot;${testProps.title}&quot; fe:content=&quot;${testProps.content}&quot; fe:data=&quot;${otherData}&quot;&gt;
-    Some Inner Ipsums
-&lt;/fe:test&gt;
-            </pre>
-            <fe:test data-test="test-value" th:data-title="${title}" fe:title="${testProps.title}" fe:content="${testProps.content}" fe:data="${otherData}">
-                Some Inner Ipsums
-            </fe:test>
+    <fe:vcard title="Till" content="Till is a boring guy from ...">
+        Nothing to see here
 
-            <h2>
-                Normal th:fragment call
-            </h2>
-            <div th:replace="~{fragments/test.html :: test()}">
-                Yada Yada
-            </div>
-        </article>
-    </main>
+        <fe:vcard title="Charlotte" content="Till's child">
+            
+        </fe:vcard>
+    </fe:vcard>
+
 </body>
 </html>
