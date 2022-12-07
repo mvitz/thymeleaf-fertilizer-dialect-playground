@@ -35,7 +35,6 @@ class FertilizerElementModelProcessor(
         // TODO: Would it be easier to mimic the props directly into the fragment parameters?
         // TODO: Can we actually not rely on mimicking a template expression? 😇 Would that be better at all?
         val expression = "~{fragments/$elementName :: $elementName}"
-        println("Searching fragment with: " + expression)
 
         val fragmentExpression = expressionParser.parseExpression(context, expression)
         val fragment = fragmentExpression.execute(context) as Fragment
@@ -53,9 +52,6 @@ class FertilizerElementModelProcessor(
             } 
             else if (tag.get(i) is ICloseElementTag) {
                 level--
-                if (level == 0) {
-                    slotName = null // Reset slotName when back on root level
-                }
             }
             if ((level == 1) && (tag.get(i) is IProcessableElementTag) && (tag.get(i) as IProcessableElementTag).hasAttribute("fe:slot")) {
                 slotName = (tag.get(i) as IProcessableElementTag).getAttributeValue("fe:slot")
@@ -66,6 +62,9 @@ class FertilizerElementModelProcessor(
             }
             al.add(tag.get(i))
             slots[slotName] = al
+            if ((level == 0) && (tag.get(i) is ICloseElementTag)) {
+                slotName = null // Reset slotName when back on root level
+            }
         }
         return slots
     }
@@ -91,6 +90,7 @@ class FertilizerElementModelProcessor(
                 newModel.add(fragmentPart)
             }
         }
+        println(newModel)
         return newModel
     }
 
