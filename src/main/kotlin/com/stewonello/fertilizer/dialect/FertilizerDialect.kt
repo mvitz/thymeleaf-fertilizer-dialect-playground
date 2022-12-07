@@ -44,12 +44,12 @@ class FertilizerDialect(
 
     override fun getProcessors(dialectPrefix: String): HashSet<IProcessor> {
 
-        val fertilizerComponentClasses = Reflections(componentPackage).getSubTypesOf(FertilizerComponent().javaClass)
+        val fertilizerComponentClasses = Reflections(componentPackage).getSubTypesOf(FertilizerComponent::class.java)
 
         return fertilizerComponentClasses.map {
             // TODO: more fancy handling of name: camelcase to kebab case or snake case something like that, maybe even configurable
             val tagName = it.simpleName.lowercase() // ClassName -> classname
-            FertilizerElementTagProcessor(DIALECT_PREFIX, tagName, it)
+            FertilizerElementModelProcessor(DIALECT_PREFIX, tagName, it)
         }.toHashSet()
     }
 }

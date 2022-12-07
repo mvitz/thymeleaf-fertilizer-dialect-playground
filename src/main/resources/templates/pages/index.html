@@ -1,23 +1,123 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:fe="" xmlns:th="http://www.thymeleaf.org">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <link rel="stylesheet" href="/style.css">
+    <meta charset="utf-8">
+    <title>Thymeleaf based components</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
 </head>
 <body>
-   
-    <fe:vcard title="FND" content="FND is a funny guy from ..." fe:data="${otherData}">
-        Here is some cool image of FND!
-    </fe:vcard>
+    <div class="container">
+        <h1>Badges</h1>
+        <div>
+            This is a <fe:badge type="danger">Badge</fe:badge>
+        </div>
+        <div>
+            This is another – more boring – <fe:badge>Badge</fe:badge>
+        </div>
 
-    <fe:vcard title="Till" content="Till is a boring guy from ...">
-        Nothing to see here
+        <h1 class="mt-5">Buttons</h1>
+        <fe:button>Simple fe:button <fe:badge type="danger">Some Badge</fe:badge></fe:button>
+        <hr />
+        <fe:button styling="cta" additional-classes="text-uppercase">CTA fe:button with uppercase</fe:button>
+        <hr />
+        <fe:button data-foo="bar" aria-live="polite" fnd-super="test">fe:button with additional attributes</fe:button>
+        <hr />
+        <fe:button type="button" name="action" value="delete">fe:button with name and value</fe:button>
 
-        <fe:vcard title="Charlotte" content="Till's child">
-            
-        </fe:vcard>
-    </fe:vcard>
+        <h1 class="mt-5">Cards</h1>
+        <fe:card heading-level="2"> 
+            Welcome to the <strong>best card</strong>
+            <span fe:slot="heading"><span lang="de">Großartige</span> Card</span>
+            <span fe:slot="footer">This is the footer!</span>
+        </fe:card>
+        <hr />
+        <fe:card heading-level="1" href="#foo">
+            <span fe:slot="heading">Another fe:card with a Link as Header</span>
+            Content baby!
+        </fe:card>
+        <hr />
+        <fe:card heading-level="3">
+            <span fe:slot="heading">Völker der Welt</span>
+            <span fe:slot="footer">Schaut auf diese Card</span>
+            Cardo Number <del>five</del>three
+        </fe:card>
 
+        <h1 class="mt-5">List</h1>
+        <lit-list children='{"type": "Car", "Foo": "Text"}'>
+            Muss weg!
+        </lit-list>
+        <hr>
+        <lit-list id="list1">
+            <span slot="slot_1234">Hallo Welt!</span>
+        </lit-list>
+        <script>
+            setTimeout(() => {
+                document.getElementById('list1').addItem('type', "Car");
+                let badge = document.createElement('lit-badge');
+                badge.innerHTML = "<span lang=\"de\">Etwas</span> text";
+                document.getElementById('list1').addItem("Foo", badge);
+                document.getElementById('list1').addSlotItem("Bar", 1234);
+            }, 2000);
+        </script>
+        <hr>
+        <lit-list id="list2">
+            <lit-list-item id="key1" key="key1">Car</lit-list-item>
+            <lit-list-item id="key2" key="Foo"><lit-badge id="my_badge">Old Badge</lit-badge></lit-list-item>
+        </lit-list>
+        <script>
+            setTimeout(() => {
+                document.getElementById('key1').innerHTML = 'type_new';
+                document.getElementById('my_badge').innerHTML = 'New Badge';
+                let thirdItem = document.createElement('lit-list-item');
+                thirdItem.setAttribute('key', '3rd Key');
+                thirdItem.innerHTML = "3rd Item";
+                document.getElementById('list2').append(thirdItem);
+            }, 2000)
+        </script>
+        <hr />
+        <lit-list ratio="8:4" children='{"type": "Bike", "Foo": "Bar"}'>
+        </lit-list>
+
+        <hr>
+
+        <form> 
+            <lit-list id="list2">
+            <lit-list-item id="key1" key="key1">Car</lit-list-item>
+            <lit-list-item id="key2" key="Foo"><input type="text" name="test"></lit-list-item>
+        </lit-list>
+        </form>
+        
+        <h1 class="mt-5">MagicHeaders</h1>
+        <lit-mh-section>
+            <article>
+                <header>
+                    <lit-mh-heading>Some h1</lit-mh-heading>
+                    <p class="tagline"> Content </p>
+                </header>
+                <lit-mh-section>
+                    <section>
+                        <lit-mh-heading>Some h2</lit-mh-heading>
+                    </section>
+                    <p>Some more content</p>
+                    <lit-mh-section>
+                        <div class="foo bar">
+                            <lit-mh-heading>Some h3</lit-mh-heading>
+                        </div>
+                        <p>Some more content</p>
+                    </lit-mh-section>
+                </lit-mh-section>
+                <lit-mh-section>
+                    <section>
+                        <lit-mh-heading>Again some h2</lit-mh-heading>
+                    </section>
+                    <p>Some more content</p>
+                </lit-mh-section>
+            </article>
+        </lit-mh-section>
+
+        <h1 class="mt-5">Form Group</h1>
+        <lit-form-group type="email" id="my-email" label="eMail" name="users_email" value="BOOM" error="'BOOM' is not a valid E-Mail address"></lit-form-group>
+    </div>
 </body>
 </html>
