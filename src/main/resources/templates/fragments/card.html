@@ -1,8 +1,13 @@
 <section th:fragment="card()" class="card">
-    <div class="card-header">
-        <fe:slot fe:name="heading" />
-    </div>
     <div class="card-body">
+        <h3 class="card-title">
+            <a th:if="${it.href}" th:href="${it.href}">
+                <fe:slot fe:name="heading" />
+            </a>
+            <th:block th:unless="${it.href}">
+                <fe:slot fe:name="heading" />
+            </th:block>
+        </h3>
         <fe:slot />
     </div>
     <div class="card-footer" th:if="${it.hasSlot('footer')}">

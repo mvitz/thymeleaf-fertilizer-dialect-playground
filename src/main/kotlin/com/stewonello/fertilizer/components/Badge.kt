@@ -2,7 +2,7 @@ package com.stewonello.fertilizer.components
 
 import com.stewonello.fertilizer.dialect.FertilizerComponent
 
-class Badge(attributes: MutableMap<String, String>, slotNames: MutableSet<String>) : FertilizerComponent (attributes, slotNames) {
+class Badge(attributes: Map<String, String>, slotNames: MutableSet<String>) : FertilizerComponent (attributes, slotNames) {
 
     var type: String?
 

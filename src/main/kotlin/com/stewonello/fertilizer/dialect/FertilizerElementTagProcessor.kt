@@ -90,7 +90,6 @@ class FertilizerElementModelProcessor(
                 newModel.add(fragmentPart)
             }
         }
-        println(newModel)
         return newModel
     }
 

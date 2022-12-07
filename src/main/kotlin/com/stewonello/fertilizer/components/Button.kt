@@ -2,14 +2,16 @@ package com.stewonello.fertilizer.components
 
 import com.stewonello.fertilizer.dialect.FertilizerComponent
 
-class Button(val attributes: MutableMap<String, String>, slotNames: MutableSet<String>) : FertilizerComponent(attributes, slotNames) {
+class Button(attributes: Map<String, String>, slotNames: MutableSet<String>) : FertilizerComponent(attributes, slotNames) {
 
     var styling: String
     var additionalClasses: String
+    val restAttributes: MutableMap<String, String>
 
     init {
-        this.styling = this.attributes.remove("styling") ?: ""
-        this.additionalClasses = this.attributes.remove("additional-classes") ?: ""
+        this.restAttributes = attributes.toMutableMap()
+        this.styling = this.restAttributes.remove("styling") ?: ""
+        this.additionalClasses = this.restAttributes.remove("additional-classes") ?: ""
     }
 
     public fun classNames(): String {
@@ -17,8 +19,8 @@ class Button(val attributes: MutableMap<String, String>, slotNames: MutableSet<S
     }
 
     public fun otherAttributes(): String {
-        if (attributes.size > 0) {
-            return attributes.map { (k, v) -> "${k}=${v}"}.joinToString(",")
+        if (restAttributes.size > 0) {
+            return restAttributes.map { (k, v) -> "${k}=${v}"}.joinToString(",")
         }
         else {
             return "," // "" leads to Thymeleaf errors in th:attr
