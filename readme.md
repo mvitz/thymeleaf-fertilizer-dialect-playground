@@ -31,10 +31,6 @@ class MyComponent : FertilizerComponent()
 
 Call components/fragments like so:
 
-- `fe:` prefixed attributes will be processed and populated as variable in fragment
-- `th:` prefixed will be processed and put onto the root element of the fragment
-- unprefixed attributes will just be put onto the root element of the fragment
-
 ```
 <div>
     <fe:mycomponent data-foo="bar" th:data-lorem="${ipsum}" fe:text="'Some Lorem'" fe:foo="${bar}">
@@ -47,7 +43,5 @@ Ok ...
 
 See all the TODO:s in the project
 
-- Mainly slots
 - Compare performance to normal fragment usage
-- Scoped variables 🥲
 - 🤷‍♀️
