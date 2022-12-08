@@ -1,0 +1,8 @@
+<th:block th:fragment="header()">
+    <h1 th:if="${header.level} == 1"><fe:slot /></h1>
+    <h2 th:if="${header.level} == 2"><fe:slot /></h2>
+    <h3 th:if="${header.level} == 3"><fe:slot /></h3>
+    <h4 th:if="${header.level} == 4"><fe:slot /></h4>
+    <h5 th:if="${header.level} == 5"><fe:slot /></h5>
+    <h6 th:if="${header.level} == 6"><fe:slot /></h6>
+</th:block>

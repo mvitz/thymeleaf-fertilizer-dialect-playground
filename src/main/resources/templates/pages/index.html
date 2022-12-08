@@ -28,8 +28,6 @@
         <h1 class="mt-5">Cards</h1>
         <fe:card heading-level="2"> 
             Welcome to the <strong>best card</strong>
-            <h1 class="mt-5">Cards</h1>
-            <span fe:slot="fnd">TAUCHT NICHT AUF!</span>
             <span fe:slot="heading"><span lang="de">Großartige</span> Card</span>
             <span fe:slot="footer">This is the <fe:badge>footer</fe:badge>!</span>
         </fe:card>
@@ -63,24 +61,24 @@
         <fe:magicheaders>
             <article>
                 <header>
-                    <lit-mh-heading>Some h1</lit-mh-heading>
+                    <fe:header>Some h1</fe:header>
                     <p class="tagline"> Content </p>
                 </header>
                 <fe:magicheaders>
                     <section>
-                        <lit-mh-heading>Some h2</lit-mh-heading>
+                        <fe:header>Some h2</fe:header>
                     </section>
                     <p>Some more content</p>
                     <fe:magicheaders>
                         <div class="foo bar">
-                            <lit-mh-heading>Some h3</lit-mh-heading>
+                            <fe:header>Some h3</fe:header>
                         </div>
                         <p>Some more content</p>
                     </fe:magicheaders>
                 </fe:magicheaders>
                 <fe:magicheaders>
                     <section>
-                        <lit-mh-heading>Again some h2</lit-mh-heading>
+                        <fe:header>Again some h2</fe:header>
                     </section>
                     <p>Some more content</p>
                 </fe:magicheaders>

@@ -6,10 +6,13 @@ import com.stewonello.fertilizer.dialect.FertilizerComponentContext
 class Card(componentContext: FertilizerComponentContext) : FertilizerComponent(componentContext) {
 
     val href: String?
-    //TODO: heading-level won't be easy with Thymeleaf. Maybe introduce a custom processor like `<foo:element name="h1">...`
+    var headingLevel: Int = 1
 
     init {
         href = componentContext.attributes["href"]?.toString()
+        if (componentContext.attributes["heading-level"] is String) {
+            headingLevel = (componentContext.attributes["heading-level"] as String).toInt()
+        }
     }
 
 }
