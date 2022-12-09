@@ -5,12 +5,10 @@ import com.stewonello.fertilizer.dialect.FertilizerComponentContext
 
 class MagicHeaders(componentContext: FertilizerComponentContext) : FertilizerComponent(componentContext) {
   
-    var parentMagicHeaders: MagicHeaders?
-    var level: Int
+    var parentMagicHeaders = componentContext.context.getVariable("parentMagicHeaders") as MagicHeaders?
+    var level: Int = parentMagicHeaders?.level?.let { it + 1 } ?: 1
 
-    init {
-        parentMagicHeaders = componentContext.context.getVariable("parentMagicHeaders") as MagicHeaders?
-        level = if (parentMagicHeaders != null) parentMagicHeaders!!.level + 1 else 1
+    init { 
         componentContext.structureHandler.setLocalVariable("parentMagicHeaders", this)
     }
 }

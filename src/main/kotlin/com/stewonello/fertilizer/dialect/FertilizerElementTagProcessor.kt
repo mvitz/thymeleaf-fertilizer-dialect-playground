@@ -56,12 +56,7 @@ class FertilizerElementModelProcessor(
             if ((level == 1) && (tag.get(i) is IProcessableElementTag) && (tag.get(i) as IProcessableElementTag).hasAttribute("fe:slot")) {
                 slotName = (tag.get(i) as IProcessableElementTag).getAttributeValue("fe:slot")
             }
-            var al = slots[slotName]
-            if (al == null) {
-                al = ArrayList<ITemplateEvent>()
-            }
-            al.add(tag.get(i))
-            slots[slotName] = al
+            slots.getOrPut(slotName) { ArrayList<ITemplateEvent>() }.add(tag.get(i))
             if ((level == 0) && (tag.get(i) is ICloseElementTag)) {
                 slotName = null // Reset slotName when back on root level
             }
