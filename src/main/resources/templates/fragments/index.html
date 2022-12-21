@@ -1,0 +1,17 @@
+<th:block th:fragment="index()">
+    <div>Index</div>
+    <ul>
+        <li th:each="heading : ${index.headings}">
+            <a th:href="|#${heading}|" th:text="${heading}"></a>
+        </li>
+    </ul>
+    <hr/>
+    <fe:slot />
+    <hr/>
+    <div>Index</div>
+    <ul>
+        <li th:each="heading : ${index.headings}">
+            <a th:href="|#${heading}|" th:text="${heading}"></a>
+        </li>
+    </ul>
+</th:block>
