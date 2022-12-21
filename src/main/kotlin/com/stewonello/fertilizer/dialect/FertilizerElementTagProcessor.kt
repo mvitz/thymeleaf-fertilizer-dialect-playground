@@ -68,9 +68,8 @@ class FertilizerElementModelProcessor(
         // Copy all elements into a new Model
         for (i in 1 until fragmentModel.size()-1) {
             var fragmentPart = fragmentModel.get(i)
-            if ((fragmentPart is IStandaloneElementTag) &&  ((fragmentPart as IStandaloneElementTag).getElementCompleteName() == "fe:slot")) {
-                val fp = fragmentPart as IStandaloneElementTag
-                val slotName = fp.getAttributeValue("fe:name")
+            if (fragmentPart is IStandaloneElementTag && fragmentPart.getElementCompleteName() == "fe:slot") {
+                val slotName = fragmentPart.getAttributeValue("fe:name")
                 if (slots.containsKey(slotName)) {
                     for (j in 0 until slots[slotName]!!.size) {
                         newModel.add(slots[slotName]!![j])
