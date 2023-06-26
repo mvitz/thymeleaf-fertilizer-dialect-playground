@@ -31,14 +31,10 @@ class FertilizerElementModelProcessor(
     }
 
     fun loadFragmentModel(context: ITemplateContext, expressionParser: IStandardExpressionParser): TemplateModel {
-        // TODO: Make location configurable. (Even independent from thymeleaf location?)
-        // TODO: Would it be easier to mimic the props directly into the fragment parameters?
-        // TODO: Can we actually not rely on mimicking a template expression? 😇 Would that be better at all?
         val expression = "~{fragments/$elementName :: $elementName}"
 
         val fragmentExpression = expressionParser.parseExpression(context, expression)
         val fragment = fragmentExpression.execute(context) as Fragment
-        // TODO: maybe some handling for unwanted Fragment values
         return fragment.templateModel
     }
 
@@ -94,13 +90,10 @@ class FertilizerElementModelProcessor(
             val plainAttributeName = it.attributeDefinition.attributeName.attributeName
 
             // Process and populate FertilizerDialect (fe:) prefixed attribute variables
+            // using `th:` variant should also work mostly but has only Strings as return type
             if(it.attributeDefinition.attributeName.prefix == dialectPrefix) {
-                // It seems not efficient to extract and reassign the values.
-                // Why doesn't it work like here??:
-                // https://github.com/thymeleaf/thymeleaf/blob/120a0e9cc5d768a7b21abb19b4f4122bdc019206/lib/thymeleaf/src/main/java/org/thymeleaf/standard/processor/AbstractStandardFragmentInsertionTagProcessor.java#L264-L271
                 val valueContent = expressionParser.parseExpression(context, it.value).execute(context)
-               // structureHandler.setLocalVariable(plainAttributeName, valueContent)
-               attrs.set(plainAttributeName, valueContent) 
+                attrs.set(plainAttributeName, valueContent) 
             }
             else { 
                 attrs.set(plainAttributeName, it.value)   

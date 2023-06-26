@@ -12,7 +12,7 @@ data class FertilizerComponentContext(
 
 open class FertilizerComponent(val componentContext: FertilizerComponentContext) {
 
-    public fun hasSlot(slotName: String): Boolean {
+    fun hasSlot(slotName: String): Boolean {
         return this.componentContext.slotNames.contains(slotName)
     }
 

@@ -10,7 +10,7 @@
     <div class="container">
         <h1>Badges</h1>
         <div>
-            This is a <fe:badge type="danger">Badge</fe:badge>
+            This is a <fe:badge type="danger">Badge <span>fdsf</span></fe:badge>
         </div>
         <div>
             This is another – more boring – <fe:badge>Badge</fe:badge>
@@ -21,15 +21,16 @@
         <hr />
         <fe:button styling="cta" additional-classes="text-uppercase">CTA fe:button with uppercase</fe:button>
         <hr />
-        <fe:button data-foo="bar" leer aria-live="polite" fnd-super="test">fe:button with additional attributes</fe:button>
+        <fe:button data-foo="bar" leer aria-live="polite">fe:button with additional attributes</fe:button>
         <hr />
         <fe:button type="button" name="action" value="delete">fe:button with name and value</fe:button>
 
         <h1 class="mt-5">Cards</h1>
         <fe:card heading-level="2"> 
             Welcome to the <strong>best card</strong>
-            <span fe:slot="heading"><span lang="de">Großartige</span> Card</span>
-            <span fe:slot="footer">This is the <fe:badge>footer</fe:badge>!</span>
+            <th:block fe:slot="heading"><span lang="de">Großartige</span> Card</th:block>
+            <span fe:slot="heading">More Heading</span>
+            <th:block fe:slot="footer">This is the <fe:badge>footer</fe:badge>!</th:block>
         </fe:card>
         <hr />
         <fe:card heading-level="1" href="#foo">
@@ -44,7 +45,7 @@
         </fe:card>
 
         <h1 class="mt-5">List</h1>
-        <fe:list fe:children='${list}'>
+        <fe:list fe:children="${list}">
             Muss weg!
         </fe:list>
 
