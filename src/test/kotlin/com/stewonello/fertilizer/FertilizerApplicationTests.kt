@@ -9,5 +9,4 @@ class FertilizerApplicationTests {
 	@Test
 	fun contextLoads() {
 	}
-
 }

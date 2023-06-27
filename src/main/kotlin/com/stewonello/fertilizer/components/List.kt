@@ -1,11 +1,10 @@
 package com.stewonello.fertilizer.components
 
-import com.stewonello.fertilizer.dialect.FertilizerComponent
-import com.stewonello.fertilizer.dialect.FertilizerComponentContext
+import com.innoq.comptus.core.Component
 
-class List(componentContext: FertilizerComponentContext) : FertilizerComponent(componentContext) {
+class List(componentContext: ComponentContext) : Component(componentContext) {
 
-    var children: Any?
+    val children: Any?
 
     init {
         this.children = componentContext.attributes["children"]

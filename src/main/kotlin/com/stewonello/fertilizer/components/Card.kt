@@ -1,11 +1,10 @@
 package com.stewonello.fertilizer.components
 
-import com.stewonello.fertilizer.dialect.FertilizerComponent
-import com.stewonello.fertilizer.dialect.FertilizerComponentContext
+import com.innoq.comptus.core.Component
+import kotlin.jvm.optionals.getOrNull
 
-class Card(componentContext: FertilizerComponentContext) : FertilizerComponent(componentContext) {
+class Card(componentContext: ComponentContext) : Component(componentContext) {
 
-    val href = componentContext.attributes["href"]?.toString()
-    val headingLevel = componentContext.attributes["heading-level"]?.toString()?.toInt()
-
+    val href = stringAttribute("href").getOrNull()
+    val headingLevel = stringAttribute("heading-level").getOrNull()?.toInt()
 }

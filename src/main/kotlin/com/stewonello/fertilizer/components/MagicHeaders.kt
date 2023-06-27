@@ -1,14 +1,13 @@
 package com.stewonello.fertilizer.components
 
-import com.stewonello.fertilizer.dialect.FertilizerComponent
-import com.stewonello.fertilizer.dialect.FertilizerComponentContext
+import com.innoq.comptus.core.Component
 
-class MagicHeaders(componentContext: FertilizerComponentContext) : FertilizerComponent(componentContext) {
-  
-    var parentMagicHeaders = componentContext.context.getVariable("parentMagicHeaders") as MagicHeaders?
-    var level: Int = parentMagicHeaders?.level?.let { it + 1 } ?: 1
+class MagicHeaders(componentContext: ComponentContext) : Component(componentContext) {
 
-    init { 
-        componentContext.structureHandler.setLocalVariable("parentMagicHeaders", this)
+    val parentMagicHeaders = outerVariable("parentMagicHeaders", MagicHeaders::class.java).orElseThrow()
+    val level: Int = parentMagicHeaders?.level?.let { it + 1 } ?: 1
+
+    init {
+        setInnerVariable("parentMagicHeaders", this);
     }
 }

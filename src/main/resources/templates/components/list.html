@@ -1,4 +1,4 @@
-<dl th:fragment="list()" th:each="row: ${list.children}" class="row">
+<dl th:each="row: ${this.children}" class="row">
     <dd th:text="${row.key}"></dd>
     <dt th:text="${row.value}"></dt>
 </dl>

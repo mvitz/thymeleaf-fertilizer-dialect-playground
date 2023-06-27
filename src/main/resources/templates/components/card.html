@@ -1,0 +1,18 @@
+<section class="card">
+    <div class="card-body">
+<!--        <co:header class="card-title" co:level="${this.headingLevel}">-->
+        <h2 class="card-title">
+            <a th:if="${this.href}" th:href="${this.href}">
+                <co:slot co:name="heading" />
+            </a>
+            <th:block th:unless="${this.href}">
+                <co:slot co:name="heading" />
+            </th:block>
+        </h2>
+<!--        </co:header>-->
+        <co:slot />
+    </div>
+    <div class="card-footer" th:if="${this.hasSlot('footer')}">
+        <co:slot co:name="footer" />
+    </div>
+</section>
